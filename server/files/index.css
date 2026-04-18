@@ -20,6 +20,8 @@ nav {
 /* navigation buttons have full width */
 nav button {
   width: 100%;
+  background-color: white;
+  color: #0056b3;
 }
 
 /* Remove unnecessary space and bullets from the lists */
@@ -31,21 +33,85 @@ ul {
 
 /* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
 
+body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "h"
+    "n"
+    "m"
+    "f";
+}
+
+/* Areas zuweisen */
+header { grid-area: h; }
+nav    { grid-area: n; }
+main   { grid-area: m; }
+footer { grid-area: f; }
+
+/* Main soll scrollen */
+main {
+  overflow-y: auto;
+}
+
+/* Responsive Layout (Desktop) */
+@media (min-width: 768px) {
+  body {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "h h"
+      "n m"
+      "f f";
+  }
+}
 
 /* Task 3.1. Make the header element a flex container and center its children
    vertically and horizontally.
  */
 
+ /* Kein unnötiger Scroll */
+body {
+  margin: 0;
+}
+
+/* Task 3.1: Header zentrieren */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
    use column direction and center the child items
  */
 
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+
 /* Task 3.3. Make the main element a Flexbox container */
 
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
 
 /* Task 3.4. Make the footer's ul a Flexbox container */
 
+footer ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
 
 /* From here on styling from exercise 1 */
 img {
@@ -72,6 +138,30 @@ span {
   padding: 4px 8px;
   border: solid black 1px;
   border-radius: 6px;
-  background-color: darkgray;
+  background-color: #007BFF;
+  color: white;
   font-weight: bold;
+}
+
+.genre:hover {
+    border: solid black 0px;
+    background-color: #0056b3;
+    cursor: crosshair;
+    transform: scale(1.1);
+}
+
+button:hover {
+    background-color: #0071EB;
+    color: white;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px white
+    ;
 }
